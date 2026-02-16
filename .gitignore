@@ -2,10 +2,10 @@
 !/**/
 !*.*
 !Makefile
-
-# Trying to ignore all generated files when compiling module
 *.cmd
 *.ko
 *.mod*
 *.symvers
 *.order
+*.o
+# Trying to ignore all generated files when compiling module
