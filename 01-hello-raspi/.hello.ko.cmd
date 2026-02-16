@@ -1,0 +1,1 @@
+savedcmd_/home/ljimenezres/homemade_vpn/01-hello-raspi/hello.ko := ld -r -EL  -maarch64elf -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/ljimenezres/homemade_vpn/01-hello-raspi/hello.ko /home/ljimenezres/homemade_vpn/01-hello-raspi/hello.o /home/ljimenezres/homemade_vpn/01-hello-raspi/hello.mod.o

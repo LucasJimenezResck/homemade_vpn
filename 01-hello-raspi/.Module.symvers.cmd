@@ -1,0 +1,1 @@
+savedcmd_/home/ljimenezres/homemade_vpn/01-hello-raspi/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /home/ljimenezres/homemade_vpn/01-hello-raspi/Module.symvers -T /home/ljimenezres/homemade_vpn/01-hello-raspi/modules.order -i Module.symvers -e 
