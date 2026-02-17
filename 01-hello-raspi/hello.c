@@ -1,12 +1,20 @@
 #include <linux/module.h>
 #include <linux/init.h>
 
-int hello_init(void) {
+//Keyword static limits the functions' visibility and linkage.
+//They cannot be accessed outside this module
+//Macros __init and __exit increase the modules' readability, in case a file is very large, by searching for these keyowrds,
+//the init and exit functions can be easily found 
+static int __init hello_init(void);
+static void __exit hello_exit(void);
+
+
+static int __init hello_init(void) {
 	printk(KERN_INFO"Hello Viki! Calling from Raspberry Pi Kernel!\n");
 	return 0;
 }
 
-void hello_exit(void) {
+static void __exit hello_exit(void) {
 	printk(KERN_INFO"Goodbye Viki! Removing module\n");
 }
 
@@ -14,5 +22,7 @@ void hello_exit(void) {
 module_init(hello_init);
 module_exit(hello_exit);
 
+//Metadata can be accessed by calling $ modinfo <.ko-file>
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Simple kernel Module for Raspberry Pi 4");
+MODULE_AUTHOR("Lucas Jimenez Resck");
+MODULE_DESCRIPTION("Simple kernel Module for Raspberry Pi 4B");
