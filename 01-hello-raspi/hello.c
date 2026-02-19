@@ -10,7 +10,16 @@ static void __exit hello_exit(void);
 
 
 static int __init hello_init(void) {
+	//Testing with all different log-levels just because
+	//Emergency was commented out because it spawns into every open terminal, which can be annoying
+	//printk(KERN_EMERG"Hello Viki! Calling from Raspberry Pi Kernel!\n");
+	printk(KERN_ALERT"Hello Viki! Calling from Raspberry Pi Kernel!\n");
+	printk(KERN_CRIT"Hello Viki! Calling from Raspberry Pi Kernel!\n");
+	printk(KERN_ERR"Hello Viki! Calling from Raspberry Pi Kernel!\n");
+	printk(KERN_WARNING"Hello Viki! Calling from Raspberry Pi Kernel!\n");
+	printk(KERN_NOTICE"Hello Viki! Calling from Raspberry Pi Kernel!\n");
 	printk(KERN_INFO"Hello Viki! Calling from Raspberry Pi Kernel!\n");
+	printk(KERN_DEBUG"Hello Viki! Calling from Raspberry Pi Kernel!\n");
 	return 0;
 }
 

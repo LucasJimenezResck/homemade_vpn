@@ -7,17 +7,36 @@ static int major_nr;
 
 static int __init cdev_basic_init(void);
 static void __exit cdev_basic_exit(void);
+static int chrdev_open(struct inode *inode, struct file *filp);
 static ssize_t chrdev_read(struct file *f, char __user *u, size_t, loff_t *o);
+static int chrdev_release(struct inode *inode, struct file *filp);
 
 
+static int chrdev_open(struct inode *inode, struct file *filp) {
+	printk(KERN_INFO"Major number: %i - Minor number: %i\n", imajor(inode), iminor(inode));
+	//struct file represents an open file, its life-cycle lasts as long as the file remains open
+	//Contains important information about the file
+	printk(KERN_INFO"File Position: %lld - Permissions: %x\n", filp->f_pos, filp->f_mode);
+	return 0;
+}
+//Remember that for this to work, you have to create a node (preferrably inside /dev) and then type
+//sudo mknod <name> c <major> <minor>
+//And when you apply a reading command like cat, you trigger this function
 static ssize_t chrdev_read(struct file *f, char __user *u, size_t, loff_t *o) {
 	printk(KERN_INFO"Read for chrdev was called\n");
 	return 0;
-} 
+}
+
+static int chrdev_release(struct inode *inode, struct file *filp) {
+	printk(KERN_INFO"File closed\n");
+	return 0;
+}
 //To confirm arguments for file_operations check out https://elixir.bootlin.com/linux/v6.18/source
 //It is a browser for the source-files of many Linux-Kernel-Versions
 static struct file_operations fops = {
+	.open = chrdev_open,
 	.read = chrdev_read,
+	.release = chrdev_release,
 };
 
 static int __init cdev_basic_init(void) {
