@@ -5,9 +5,10 @@
 //IO pins used for the button and offset
 #define IO_LED 21
 #define IO_BUTTON 20
+//
 //Offset to correctly address gpio-pins, you can find this out under the folder /sys/class/gpio/gpiochip<XXX>
-//The suffix of the folder whose label-file has the word gpio on it is the required offset to definde here
-#define IO_OFFSET 0 
+//The suffix of the folder whose label-file has the word gpio on it is the required offset to define here
+#define IO_OFFSET 570
 
 //To check out the pin layout of the Raspberry Pi, you can access this website https://pinout.xyz/
 //Since the 40-Pin introduction, all models have the same pinout with the exception of the Zero and Zero W.
